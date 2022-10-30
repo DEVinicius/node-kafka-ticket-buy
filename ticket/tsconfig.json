@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./",
+      "strict": true,
+      "baseUrl": ".",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "paths": {
+        "@app/*":["./src/*"],
+        "@ingress/*":["./src/modules/ingress/*"],
+        "@infra/*":["./src/infra/*"]
+      },
+    }
+} 

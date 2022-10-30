@@ -1,0 +1,15 @@
+curl -X POST localhost:8083/connectors -H "Content-Type: application/json" -d '{
+     "name": "payment_ticket_teste",
+      "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "connection.url": "jdbc:mysql:thin:@localhost:3306/payment",
+        "connection.user": "root",
+        "connection.password": "root",
+        "topic.prefix": "payment-_",
+        "table.whitelist": "payment.payment",
+        "poll.interval.ms": 3600000,
+        "value.converter":"org.apache.kafka.connect.json.JsonConverter",
+        "mode": "bulk",
+        "validate.non.null": false
+    }
+}'
