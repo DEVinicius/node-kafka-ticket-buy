@@ -5,17 +5,6 @@ services:
         ports:
             - '2181:2181'
 
-    database:
-        image: mysql
-        command: --default-authentication-plugin=mysql_native_password
-        restart: always
-        ports:
-          - '3306:3306'
-        volumes:
-          - './.docker/data:/var/lib/mysql'
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_USER=teste
     kafka:
         image: wurstmeister/kafka:2.13-2.8.1
         ports:
@@ -30,6 +19,19 @@ services:
             KAFKA_CREATE_TOPICS: 'topic-test:1:1'
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+
+    database:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        ports:
+          - '3306:3306'
+        volumes:
+          - './.docker/data:/var/lib/mysql'
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_USER=teste
+    
 
     kafka-connect:
         image: confluentinc/cp-kafka-connect-base:latest
